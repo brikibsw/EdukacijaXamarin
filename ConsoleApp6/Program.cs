@@ -6,21 +6,39 @@ namespace ConsoleApp6
     {
         static void Main()
         {
+
+
             var pero = new Osoba();
             pero.Ime = "Pero";
             pero.Prezime = "Perić";
             pero.Starost = 55;
-
-            Ispis(pero);
 
             var djuro = new Osoba();
             djuro.Ime = "Djuro";
             djuro.Prezime = "Djuric";
             djuro.Starost = 66;
 
-            Ispis(djuro);
+            var brojevi = new int[] { 1, 2, 3, 4, 5 };
+            var stringovi = new string[] { "Neki", "Niz", "stringova" };
 
-            IspisSaToString(djuro);
+            for (int j = 0; j < 100; j++)
+            {
+                //Console.WriteLine(j);
+            }
+
+            int i = 100;
+            while (i < 100)
+            {
+                Console.WriteLine(i);
+                i++;
+            }
+
+            int ii = 100;
+            do
+            {
+                Console.WriteLine(ii);
+                ii++;
+            } while (ii < 100);
 
             Console.ReadLine();
         }
