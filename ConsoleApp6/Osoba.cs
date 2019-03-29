@@ -2,6 +2,14 @@
 {
     class Osoba
     {
+        public Osoba() { }
+        public Osoba(string i, string p, int s = 0)
+        {
+            Ime = i;
+            Prezime = p;
+            Starost = s;
+        }
+
         public string Ime { get; set; }
 
         public string Prezime { get; set; }

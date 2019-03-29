@@ -1,63 +1,119 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp6
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
+            var brojevi = new List<int>();
+            var operatori = new List<string>();
 
+            var jednako = false;
+            var tip = "operacija";
 
-            var pero = new Osoba();
-            pero.Ime = "Pero";
-            pero.Prezime = "Perić";
-            pero.Starost = 55;
-
-            var djuro = new Osoba();
-            djuro.Ime = "Djuro";
-            djuro.Prezime = "Djuric";
-            djuro.Starost = 66;
-
-            var brojevi = new int[] { 1, 2, 3, 4, 5 };
-            var stringovi = new string[] { "Neki", "Niz", "stringova" };
-
-            for (int j = 0; j < 100; j++)
+            while (jednako == false)
             {
-                //Console.WriteLine(j);
+                if (tip == "broj")
+                {
+                    var poruka = brojevi.Count < 2 ? "Unesite operaciju" : "Unesite operaciju ili znak = za rezultat";
+                    var operacija = Operator(poruka, brojevi.Count >= 2);
+                    if (operacija != "=")
+                    {
+                        operatori.Add(operacija);
+                        tip = "operacija";
+                    }
+                    else
+                    {
+                        jednako = true;
+                    }
+                }
+                else
+                {
+                    brojevi.Add(Broj("Unesite broj"));
+                    tip = "broj";
+                }
             }
 
-            int i = 100;
-            while (i < 100)
+            var rezultat = brojevi[0];
+            var odgovor = brojevi[0].ToString();
+
+            for (int i = 1; i < brojevi.Count; i++)
             {
-                Console.WriteLine(i);
-                i++;
+                var broj2 = brojevi[i];
+                var operacija = operatori[i - 1];
+                rezultat = Rezultat(rezultat, broj2, operacija);
+                odgovor = odgovor + " " + operacija + " " + broj2;
             }
 
-            int ii = 100;
-            do
-            {
-                Console.WriteLine(ii);
-                ii++;
-            } while (ii < 100);
+            odgovor = odgovor + " = " + rezultat;
 
+            Console.WriteLine(odgovor);
             Console.ReadLine();
         }
 
-        static void Ispis(Osoba osoba)
+        public static int Rezultat(int x, int y, string o)
         {
-            var str = osoba.Prezime + ", " + osoba.Ime + " " + osoba.Starost;
-            Console.WriteLine(str);
+            int rezultat = 0;
+
+            switch (o)
+            {
+                case "+":
+                    rezultat = x + y;
+                    break;
+                case "-":
+                    rezultat = x - y;
+                    break;
+                case "*":
+                    rezultat = x * y;
+                    break;
+                default:
+                    rezultat = x / y;
+                    break;
+            }
+
+            return rezultat;
         }
 
-        static void IspisSaPropertijem(Osoba osoba)
+        public static string Operator(string poruka, bool jednako = false)
         {
-            var str = osoba.PrezimeIme + " " + osoba.Starost;
-            Console.WriteLine(str);
+            var input = "";
+
+            if (jednako)
+            {
+                while (input != "+" && input != "-" && input != "/" && input != "*" && input != "=")
+                {
+                    Console.WriteLine(poruka);
+                    input = Console.ReadLine();
+                }
+            }
+            else
+            {
+                while (input != "+" && input != "-" && input != "/" && input != "*")
+                {
+                    Console.WriteLine(poruka);
+                    input = Console.ReadLine();
+                }
+            }
+
+            return input;
         }
 
-        static void IspisSaToString(Osoba osoba)
+        public static int Broj(string poruka)
         {
-            Console.WriteLine(osoba.ToString());
+            int broj = 0;
+            bool uspio = false;
+            string input = null;
+
+            while (uspio == false)
+            {
+                Console.WriteLine(poruka);
+                input = Console.ReadLine();
+                uspio = int.TryParse(input, out broj);
+            }
+
+            return broj;
         }
     }
 }
