@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleApp6
+namespace DemoArrays
 {
     class Program
     {
@@ -60,16 +60,16 @@ namespace ConsoleApp6
             switch (o)
             {
                 case "+":
-                    rezultat = x + y;
+                    rezultat = Kalkulator.Zbroji( x, y );
                     break;
                 case "-":
-                    rezultat = x - y;
+                    rezultat = Kalkulator.Oduzmi( x, y );
                     break;
                 case "*":
-                    rezultat = x * y;
+                    rezultat = Kalkulator.Mnozi( x, y );
                     break;
                 default:
-                    rezultat = x / y;
+                    rezultat = Kalkulator.Djeli( x, y );
                     break;
             }
 

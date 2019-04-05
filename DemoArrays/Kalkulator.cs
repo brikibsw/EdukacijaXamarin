@@ -1,6 +1,6 @@
-﻿namespace ConsoleApp6
+﻿namespace DemoArrays
 {
-    static class Kalkulator
+    public class Kalkulator
     {
         public static int Zbroji(int x, int y, int z = 0, int q = 0)
         {
