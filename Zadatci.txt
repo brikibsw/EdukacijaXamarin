@@ -1,0 +1,10 @@
+
+Napraviti klasu imena Zivotinja
+	- property string Ime
+	- property string Tip
+
+	- konstruktor koji prima parametar string i postavja vrijednost propertija Tip
+
+Napraviti klasu imena Pas koja nasljedjuje klasu Zivotinja i postavlja Tip = "PAS"
+
+Napraviti klasu imena Macka koja nasljedjuje klasu Zivotinja i postavlja Tip = "MACKA"
