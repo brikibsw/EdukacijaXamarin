@@ -21,6 +21,11 @@ namespace Basic.Klase
         {
             return Tip + "  " + Ime;
         }
+
+        public virtual void Demo()
+        {
+            Console.WriteLine(this);
+        }
     }
 
     public class Pas : Zivotinja
@@ -32,6 +37,11 @@ namespace Basic.Klase
         public Pas(string i) : base("PAS")
         {
             Ime = i;
+        }
+
+        public override void Demo()
+        {
+            Console.WriteLine(Ime);
         }
     }
 
@@ -47,7 +57,7 @@ namespace Basic.Klase
     {
         public static void Print(this Zivotinja zivotinja)
         {
-            Console.WriteLine(zivotinja.Tip + "  " + zivotinja.Ime);
+            Console.WriteLine(zivotinja);
         }
     }
 }
