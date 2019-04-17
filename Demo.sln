@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoArrays", "DemoArrays\DemoArrays.csproj", "{EC3657F7-E046-418A-8B22-29C8E0F6B67D}"
 EndProject
@@ -13,6 +13,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{0A861543-A16C-4B84-8B58-2C19E424C277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoXamarinForms.Android", "DemoXamarinForms\DemoXamarinForms.Android\DemoXamarinForms.Android.csproj", "{D5E8E0FF-D537-40BB-AE37-093FA41C084B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoXamarinForms", "DemoXamarinForms\DemoXamarinForms\DemoXamarinForms.csproj", "{A342755D-267E-486A-8896-F70AD24E6871}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CsharpDemos", "CsharpDemos", "{4EF92E6A-B5E5-4A5B-B1D7-56C59AE793F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XamarinFormsDemo", "XamarinFormsDemo", "{8096001A-C168-4C49-A273-7F4919148752}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XamarinFormsCalculator", "XamarinFormsCalculator", "{64EBB020-6D60-45D7-83E4-4B581CF3C834}"
+	ProjectSection(SolutionItems) = preProject
+		Calkulatrr\Calkulatrr.png = Calkulatrr\Calkulatrr.png
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calkulatrr.Android", "Calkulatrr\Calkulatrr.Android\Calkulatrr.Android.csproj", "{7F910E81-E919-450E-A355-6B6E256F3447}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calkulatrr", "Calkulatrr\Calkulatrr\Calkulatrr.csproj", "{8EB61CA1-D621-473A-93B5-07B4BFB000BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +49,38 @@ Global
 		{0A861543-A16C-4B84-8B58-2C19E424C277}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A861543-A16C-4B84-8B58-2C19E424C277}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A861543-A16C-4B84-8B58-2C19E424C277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E8E0FF-D537-40BB-AE37-093FA41C084B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E8E0FF-D537-40BB-AE37-093FA41C084B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E8E0FF-D537-40BB-AE37-093FA41C084B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D5E8E0FF-D537-40BB-AE37-093FA41C084B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E8E0FF-D537-40BB-AE37-093FA41C084B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E8E0FF-D537-40BB-AE37-093FA41C084B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A342755D-267E-486A-8896-F70AD24E6871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A342755D-267E-486A-8896-F70AD24E6871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A342755D-267E-486A-8896-F70AD24E6871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A342755D-267E-486A-8896-F70AD24E6871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F910E81-E919-450E-A355-6B6E256F3447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F910E81-E919-450E-A355-6B6E256F3447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F910E81-E919-450E-A355-6B6E256F3447}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7F910E81-E919-450E-A355-6B6E256F3447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F910E81-E919-450E-A355-6B6E256F3447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F910E81-E919-450E-A355-6B6E256F3447}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8EB61CA1-D621-473A-93B5-07B4BFB000BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB61CA1-D621-473A-93B5-07B4BFB000BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB61CA1-D621-473A-93B5-07B4BFB000BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB61CA1-D621-473A-93B5-07B4BFB000BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC3657F7-E046-418A-8B22-29C8E0F6B67D} = {4EF92E6A-B5E5-4A5B-B1D7-56C59AE793F8}
+		{2A98BAD8-6D1C-4447-A6D8-8F743A0CD857} = {4EF92E6A-B5E5-4A5B-B1D7-56C59AE793F8}
+		{0A861543-A16C-4B84-8B58-2C19E424C277} = {4EF92E6A-B5E5-4A5B-B1D7-56C59AE793F8}
+		{D5E8E0FF-D537-40BB-AE37-093FA41C084B} = {8096001A-C168-4C49-A273-7F4919148752}
+		{A342755D-267E-486A-8896-F70AD24E6871} = {8096001A-C168-4C49-A273-7F4919148752}
+		{7F910E81-E919-450E-A355-6B6E256F3447} = {64EBB020-6D60-45D7-83E4-4B581CF3C834}
+		{8EB61CA1-D621-473A-93B5-07B4BFB000BC} = {64EBB020-6D60-45D7-83E4-4B581CF3C834}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB10E072-BC8E-448D-BD13-FB33B04063A2}

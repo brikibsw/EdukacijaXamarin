@@ -14,7 +14,7 @@ namespace Generics.Demo
 
         // metrode u interface-u nemaju blok koda i završavaju sa ;
         // nemaju blok koda zato sto nemaju logiku nego se logika nalazi u 
-        // klasu koja implemetira interface i metodu
+        // klasi koja implemetira interface i metodu
         void Print();
     }
 

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DemoXamarinForms"
+             x:Class="DemoXamarinForms.MainPage">
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="200" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView WidthRequest="120" Color="Red" Grid.Row="0" Grid.Column="0" />
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Text="Klikni" />
+                <Button Grid.Row="1" Grid.Column="1" Text="Klikni 2" />
+            </Grid>
+
+            <BoxView Margin="0" Color="Aquamarine" Grid.Row="0" Grid.Column="1" />
+
+            <BoxView Color="Orange" Grid.Row="1" Grid.Column="0"/>
+            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                <Button TextColor="Green" BackgroundColor="Aqua" BorderColor="Black" BorderWidth="1" BorderRadius="12" Text="1111111111111111111"/>
+                <Button WidthRequest="40" Text="2"/>
+                <Button WidthRequest="40" Text="3"/>
+            </StackLayout>
+            <BoxView Color="Green" Grid.Row="1" Grid.Column="1"/>
+
+            <BoxView Color="Yellow" Grid.Row="2" Grid.Column="0"/>
+            <BoxView Color="Brown" Grid.Row="2" Grid.Column="1"/>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
