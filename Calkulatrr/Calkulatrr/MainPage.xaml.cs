@@ -5,8 +5,8 @@ namespace Calkulatrr
 {
     public partial class MainPage : ContentPage
     {
-        private int? _prviBroj = null;
-        private int? PrviBroj
+        private decimal? _prviBroj = null;
+        private decimal? PrviBroj
         {
             get { return _prviBroj; }
             set
@@ -27,8 +27,8 @@ namespace Calkulatrr
             }
         }
 
-        private int? _drugiBroj = null;
-        private int? DrugiBroj
+        private decimal? _drugiBroj = null;
+        private decimal? DrugiBroj
         {
             get { return _drugiBroj; }
             set
@@ -45,10 +45,10 @@ namespace Calkulatrr
 
         private void SetRezultatText()
         {
-            var p1 = PrviBroj != null ? PrviBroj.ToString() : "";
+            var p1 = PrviBroj != null ? PrviBroj.ToString() + (commaPressed && PrviBroj.ToString().Contains(".") == false ? "," : "") : "";
             var p2 = Operacija != null ? Operacija : "";
-            var p3 = DrugiBroj != null ? DrugiBroj.ToString() : "";
-            Rezultat.Text = $"{p1} {p2} {p3}";
+            var p3 = DrugiBroj != null ? DrugiBroj.ToString() + (commaPressed && !DrugiBroj.ToString().Contains(".") ? "," : "") : "";
+            Rezultat.Text = $"{p1.Replace(".", ",")} {p2} {p3.Replace(".", ",")}";
         }
 
         private void CE_Button_Clicked(object sender, EventArgs e)
@@ -68,6 +68,7 @@ namespace Calkulatrr
             PrviBroj = null;
             Operacija = null;
             DrugiBroj = null;
+            Formula.Text = "";
         }
 
         private void BKSP_Button_Clicked(object sender, EventArgs e)
@@ -76,16 +77,7 @@ namespace Calkulatrr
             {
                 if( PrviBroj != null )
                 {
-                    var prviBrojString = PrviBroj.ToString();
-                    var prviBrojSubstring = prviBrojString.Substring(0, prviBrojString.Length - 1);
-                    if ( prviBrojSubstring != "" && prviBrojSubstring != "-" )
-                    {
-                        PrviBroj = int.Parse(prviBrojSubstring);
-                    }
-                    else
-                    {
-                        PrviBroj = null;
-                    }
+                    Backspace(broj: PrviBroj, daliJePrviBrojUPitanju: true);
                 }
             }
             else
@@ -96,17 +88,43 @@ namespace Calkulatrr
                 }
                 else
                 {
-                    var drugiBrojString = DrugiBroj.ToString();
-                    var drugiBrojSubstring = drugiBrojString.Substring(0, drugiBrojString.Length - 1);
-                    if ( drugiBrojSubstring != "" && drugiBrojSubstring != "-" )
-                    {
-                        DrugiBroj = int.Parse(drugiBrojSubstring);
-                    }
-                    else
-                    {
-                        DrugiBroj = null;
-                    }
+                    Backspace(DrugiBroj, false);
                 }
+            }
+        }
+
+        private void Backspace(decimal? broj, bool daliJePrviBrojUPitanju)
+        {
+            var brojString = broj.ToString();
+            brojString = brojString + (commaPressed && broj.ToString().Contains(".") == false ? "," : "");
+            var brojSubstring = brojString.Substring(0, brojString.Length - 1);
+
+            if (commaPressed)
+            {
+                commaPressed = false;
+            }
+
+            if (brojString.Length > 2)
+            {
+                commaPressed = brojString.Substring(brojString.Length - 2, 1) == ".";
+            }
+
+            if (brojSubstring != "" && brojSubstring != "-")
+            {
+                broj = decimal.Parse(brojSubstring);
+            }
+            else
+            {
+                broj = null;
+            }
+
+            if( daliJePrviBrojUPitanju == true )
+            {
+                PrviBroj = broj;
+            }
+            else
+            {
+                DrugiBroj = broj;
             }
         }
 
@@ -192,9 +210,36 @@ namespace Calkulatrr
             SetNumbers(0);
         }
 
+        private bool commaPressed = false;
+
         private void COM_Button_Clicked(object sender, EventArgs e)
         {
+            if( Operacija == null )
+            {
+                if( commaPressed == false && PrviBroj.ToString().Contains(".") == false )
+                {
+                    commaPressed = true;
 
+                    if(PrviBroj == null)
+                    {
+                        PrviBroj = 0;
+                    }
+                }
+            }
+            else
+            {
+                if (commaPressed == false && DrugiBroj.ToString().Contains(".") == false)
+                {
+                    commaPressed = true;
+
+                    if (DrugiBroj == null)
+                    {
+                        DrugiBroj = 0;
+                    }
+                }
+            }
+
+            SetRezultatText();
         }
 
         private void EQ_Button_Clicked(object sender, EventArgs e)
@@ -202,7 +247,7 @@ namespace Calkulatrr
             Calculate();
         }
 
-        private void SetNumbers(int broj)
+        private void SetNumbers(decimal broj)
         {
             if( Operacija == null )
             {
@@ -212,8 +257,8 @@ namespace Calkulatrr
                 }
                 else
                 {
-                    var tempBroj = PrviBroj.ToString() + broj;
-                    PrviBroj = int.Parse(tempBroj);
+                    var tempBroj = PrviBroj.ToString() + (commaPressed ? "." : "") + broj;
+                    PrviBroj = decimal.Parse(tempBroj);
                 }
             }
             else
@@ -224,9 +269,14 @@ namespace Calkulatrr
                 }
                 else
                 {
-                    var tempBroj = DrugiBroj.ToString() + broj;
-                    DrugiBroj = int.Parse(tempBroj);
+                    var tempBroj = DrugiBroj.ToString() + (commaPressed ? "." : "") + broj;
+                    DrugiBroj = decimal.Parse(tempBroj);
                 }
+            }
+
+            if(commaPressed)
+            {
+                commaPressed = false;
             }
         }
 
@@ -246,7 +296,7 @@ namespace Calkulatrr
                 }
                 else
                 {
-                    int? rez = 0;
+                    decimal? rez = 0;
                     switch (Operacija)
                     {
                         case "+":
@@ -263,7 +313,7 @@ namespace Calkulatrr
                             break;
                     }
 
-                    Formula.Text = PrviBroj + " " + Operacija + " " + DrugiBroj;
+                    Formula.Text = PrviBroj.ToString().Replace(".", ",") + " " + Operacija + " " + DrugiBroj.ToString().Replace(".", ",");
 
                     PrviBroj = rez;
                     Operacija = o;
