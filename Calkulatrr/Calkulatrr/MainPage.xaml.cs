@@ -45,10 +45,12 @@ namespace Calkulatrr
 
         private void SetRezultatText()
         {
-            var p1 = PrviBroj != null ? PrviBroj.ToString() + (commaPressed && PrviBroj.ToString().Contains(".") == false ? "," : "") : "";
+            var p1 = PrviBroj != null ? PrviBroj.ToString() + (commaPressed && PrviBroj.ToString().Contains(".") == false && Operacija == null ? "," : "") : "";
             var p2 = Operacija != null ? Operacija : "";
             var p3 = DrugiBroj != null ? DrugiBroj.ToString() + (commaPressed && !DrugiBroj.ToString().Contains(".") ? "," : "") : "";
             Rezultat.Text = $"{p1.Replace(".", ",")} {p2} {p3.Replace(".", ",")}";
+            Rezultat.TextColor = Color.Black;
+            Rezultat.FontSize = 42;
         }
 
         private void CE_Button_Clicked(object sender, EventArgs e)
@@ -133,39 +135,9 @@ namespace Calkulatrr
             SetOperator("/");
         }
 
-        private void NUM7_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(7);
-        }
-
-        private void NUM8_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(8);
-        }
-
-        private void NUM9_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(9);
-        }
-
         private void MLTP_Button_Clicked(object sender, EventArgs e)
         {
             SetOperator("*");
-        }
-
-        private void NUM4_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(4);
-        }
-
-        private void NUM5_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(5);
-        }
-
-        private void NUM6_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(6);
         }
 
         private void SUB_Button_Clicked(object sender, EventArgs e)
@@ -173,19 +145,11 @@ namespace Calkulatrr
             SetOperator("-");
         }
 
-        private void NUM1_Button_Clicked(object sender, EventArgs e)
+        private void NUM_Button_Clicked(object sender, EventArgs e)
         {
-            SetNumbers(1);
-        }
-
-        private void NUM2_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(2);
-        }
-
-        private void NUM3_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(3);
+            var btn = (Button)sender;
+            var num = int.Parse(btn.Text);
+            SetNumbers(num);
         }
 
         private void ADD_Button_Clicked(object sender, EventArgs e)
@@ -203,11 +167,6 @@ namespace Calkulatrr
             {
                 DrugiBroj = DrugiBroj * -1;
             }
-        }
-
-        private void NUM0_Button_Clicked(object sender, EventArgs e)
-        {
-            SetNumbers(0);
         }
 
         private bool commaPressed = false;
@@ -293,6 +252,10 @@ namespace Calkulatrr
                 if(Operacija == "/" && DrugiBroj == 0)
                 {
                     // TODO: hendlati situaciju kada se dijeli sa 0
+                    C_Button_Clicked(null, null);
+                    Rezultat.Text = "Nemožete dijeliti sa nulom!";
+                    Rezultat.FontSize = 32;
+                    Rezultat.TextColor = Color.Red;
                 }
                 else
                 {
