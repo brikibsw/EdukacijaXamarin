@@ -41,6 +41,7 @@ namespace Calkulatrr
         public MainPage()
         {
             InitializeComponent();
+            HistoryList.ItemsSource = History.HistoryList;
         }
 
         private void SetRezultatText()
@@ -247,43 +248,61 @@ namespace Calkulatrr
 
         private void Calculate(string o = null)
         {
-            if( PrviBroj != null && Operacija != null && DrugiBroj != null )
+            if( PrviBroj != null && Operacija != null )
             {
-                if(Operacija == "/" && DrugiBroj == 0)
+                if( DrugiBroj == null && Operacija == "*")
                 {
-                    // TODO: hendlati situaciju kada se dijeli sa 0
-                    C_Button_Clicked(null, null);
-                    Rezultat.Text = "Nemožete dijeliti sa nulom!";
-                    Rezultat.FontSize = 32;
-                    Rezultat.TextColor = Color.Red;
+                    Formula.Text = PrviBroj.ToString().Replace(".", ",") + " " + Operacija + " " + PrviBroj.ToString().Replace(".", ",");
+
+                    PrviBroj = PrviBroj*PrviBroj;
+                    Operacija = o;
+
+                    History.HistoryList.Add(Formula.Text + "=" + PrviBroj);
                 }
-                else
+                else if(DrugiBroj != null)
                 {
-                    decimal? rez = 0;
-                    switch (Operacija)
+                    if(Operacija == "/" && DrugiBroj == 0)
                     {
-                        case "+":
-                            rez = PrviBroj + DrugiBroj;
-                            break;
-                        case "-":
-                            rez = PrviBroj - DrugiBroj;
-                            break;
-                        case "*":
-                            rez = PrviBroj * DrugiBroj;
-                            break;
-                        default:
-                            rez = PrviBroj / DrugiBroj;
-                            break;
+                        C_Button_Clicked(null, null);
+                        Rezultat.Text = "Nemožete dijeliti sa nulom!";
+                        Rezultat.FontSize = 32;
+                        Rezultat.TextColor = Color.Red;
+                    }
+                    else
+                    {
+                        decimal? rez = 0;
+                        switch (Operacija)
+                        {
+                            case "+":
+                                rez = PrviBroj + DrugiBroj;
+                                break;
+                            case "-":
+                                rez = PrviBroj - DrugiBroj;
+                                break;
+                            case "*":
+                                rez = PrviBroj * DrugiBroj;
+                                break;
+                            default:
+                                rez = PrviBroj / DrugiBroj;
+                                break;
+                        }
+
+                        Formula.Text = PrviBroj.ToString().Replace(".", ",") + " " + Operacija + " " + DrugiBroj.ToString().Replace(".", ",");
+
+                        History.HistoryList.Add(Formula.Text + "=" + rez);
+
+                        PrviBroj = rez;
+                        Operacija = o;
+                        DrugiBroj = null;
                     }
 
-                    Formula.Text = PrviBroj.ToString().Replace(".", ",") + " " + Operacija + " " + DrugiBroj.ToString().Replace(".", ",");
-
-                    PrviBroj = rez;
-                    Operacija = o;
-                    DrugiBroj = null;
                 }
             }
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            HistoryGrid.IsVisible = !HistoryGrid.IsVisible;
+        }
     }
 }

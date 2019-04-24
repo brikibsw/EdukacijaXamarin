@@ -36,14 +36,24 @@
                 <RowDefinition Height="108"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" 
+            <Label Grid.Row="0" Grid.Column="0"
                TextColor="Black"
                Margin="6"
                Text="Calkulatrr" 
                FontSize="Large"/>
 
-            <Grid Grid.Row="1" Padding="2">
+            <Button Grid.Row="0" Grid.Column="1"
+                    Text="Povijest"
+                    Style="{StaticResource operatorButtonStyle}"
+                    Padding="6" Margin="0, 4, 4, 0"
+                    Clicked="Button_Clicked"/>
+
+            <Grid Grid.Row="1" Padding="2" Grid.Column="0" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*"/>
@@ -99,7 +109,7 @@
 
             </Grid>
 
-            <Grid Grid.Row="2" 
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                   BackgroundColor="#adc8df"
                   Padding="4">
                 <Grid.RowDefinitions>
@@ -147,6 +157,20 @@
 
             </Grid>
 
+            <Grid x:Name="HistoryGrid" IsVisible="False" 
+                  Grid.Column="0" Grid.Row="1" 
+                  Grid.ColumnSpan="2" Grid.RowSpan="2"
+                  BackgroundColor="#AFBBC6">
+                
+                <ListView x:Name="HistoryList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>
