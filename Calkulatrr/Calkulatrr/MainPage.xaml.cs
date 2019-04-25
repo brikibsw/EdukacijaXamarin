@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Calkulatrr
 {
     public partial class MainPage : ContentPage
     {
+        public List<string> HistoryList = new List<string>();
+
         private decimal? _prviBroj = null;
         private decimal? PrviBroj
         {
@@ -41,7 +44,7 @@ namespace Calkulatrr
         public MainPage()
         {
             InitializeComponent();
-            HistoryList.ItemsSource = History.HistoryList;
+            HistoryListView.ItemsSource = HistoryList;
         }
 
         private void SetRezultatText()
@@ -257,7 +260,7 @@ namespace Calkulatrr
                     PrviBroj = PrviBroj*PrviBroj;
                     Operacija = o;
 
-                    History.HistoryList.Add(Formula.Text + "=" + PrviBroj);
+                    AddToHistoryList(Formula.Text + " = " + PrviBroj);
                 }
                 else if(DrugiBroj != null)
                 {
@@ -289,7 +292,7 @@ namespace Calkulatrr
 
                         Formula.Text = PrviBroj.ToString().Replace(".", ",") + " " + Operacija + " " + DrugiBroj.ToString().Replace(".", ",");
 
-                        History.HistoryList.Add(Formula.Text + "=" + rez);
+                        AddToHistoryList(Formula.Text + " = " + rez);
 
                         PrviBroj = rez;
                         Operacija = o;
@@ -298,6 +301,13 @@ namespace Calkulatrr
 
                 }
             }
+        }
+
+        private void AddToHistoryList(string val)
+        {
+            HistoryList.Add(val);
+            HistoryListView.ItemsSource = null;
+            HistoryListView.ItemsSource = HistoryList;
         }
 
         private void Button_Clicked(object sender, EventArgs e)

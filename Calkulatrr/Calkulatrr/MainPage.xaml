@@ -162,12 +162,12 @@
                   Grid.ColumnSpan="2" Grid.RowSpan="2"
                   BackgroundColor="#AFBBC6">
                 
-                <ListView x:Name="HistoryList">
-                    <ListView.ItemTemplate>
+                <ListView x:Name="HistoryListView">
+                    <!--<ListView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding}" />
+                            <Label Text="{Binding .}" />
                         </DataTemplate>
-                    </ListView.ItemTemplate>
+                    </ListView.ItemTemplate>-->
                 </ListView>
             </Grid>
             
