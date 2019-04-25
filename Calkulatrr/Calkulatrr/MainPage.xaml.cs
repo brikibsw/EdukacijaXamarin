@@ -310,9 +310,20 @@ namespace Calkulatrr
             HistoryListView.ItemsSource = HistoryList;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            HistoryGrid.IsVisible = !HistoryGrid.IsVisible;
+            if(HistoryGrid.IsVisible)
+            {
+                HistoryButton.Text = "Povijest";
+                await HistoryGrid.FadeTo(0, 1000, Easing.CubicInOut);
+                HistoryGrid.IsVisible = false;
+            }
+            else
+            {
+                HistoryGrid.IsVisible = true;
+                HistoryButton.Text = "Rikverc";
+                await HistoryGrid.FadeTo(1, 1000, Easing.Linear);
+            }
         }
     }
 }

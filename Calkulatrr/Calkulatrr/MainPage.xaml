@@ -47,8 +47,10 @@
                Text="Calkulatrr" 
                FontSize="Large"/>
 
-            <Button Grid.Row="0" Grid.Column="1"
+            <Button x:Name="HistoryButton" 
+                Grid.Row="0" Grid.Column="1"
                     Text="Povijest"
+                    WidthRequest="120"
                     Style="{StaticResource operatorButtonStyle}"
                     Padding="6" Margin="0, 4, 4, 0"
                     Clicked="Button_Clicked"/>
@@ -163,11 +165,13 @@
                   BackgroundColor="#AFBBC6">
                 
                 <ListView x:Name="HistoryListView">
-                    <!--<ListView.ItemTemplate>
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding .}" />
+                            <ViewCell IsEnabled="False">
+                                <Label FontSize="22" TextColor="Chocolate" Text="{Binding .}" />
+                            </ViewCell>
                         </DataTemplate>
-                    </ListView.ItemTemplate>-->
+                    </ListView.ItemTemplate>
                 </ListView>
             </Grid>
             
