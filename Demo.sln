@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28729.10
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoArrays", "DemoArrays\DemoArrays.csproj", "{EC3657F7-E046-418A-8B22-29C8E0F6B67D}"
 EndProject
@@ -30,6 +30,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calkulatrr.Android", "Calkulatrr\Calkulatrr.Android\Calkulatrr.Android.csproj", "{7F910E81-E919-450E-A355-6B6E256F3447}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calkulatrr", "Calkulatrr\Calkulatrr\Calkulatrr.csproj", "{8EB61CA1-D621-473A-93B5-07B4BFB000BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XamarinFormsAdresar", "XamarinFormsAdresar", "{DE337137-6940-449E-B323-B4F160274904}"
+	ProjectSection(SolutionItems) = preProject
+		Struktura.txt = Struktura.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adresar.Android", "Adresar\Adresar.Android\Adresar.Android.csproj", "{D8034A02-A867-4D70-B957-6A910B846D6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adresar", "Adresar\Adresar\Adresar.csproj", "{33F6119B-58F3-490C-A9C3-1986AF7CC92D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +78,16 @@ Global
 		{8EB61CA1-D621-473A-93B5-07B4BFB000BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EB61CA1-D621-473A-93B5-07B4BFB000BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EB61CA1-D621-473A-93B5-07B4BFB000BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8034A02-A867-4D70-B957-6A910B846D6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8034A02-A867-4D70-B957-6A910B846D6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8034A02-A867-4D70-B957-6A910B846D6A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D8034A02-A867-4D70-B957-6A910B846D6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8034A02-A867-4D70-B957-6A910B846D6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8034A02-A867-4D70-B957-6A910B846D6A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{33F6119B-58F3-490C-A9C3-1986AF7CC92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F6119B-58F3-490C-A9C3-1986AF7CC92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F6119B-58F3-490C-A9C3-1986AF7CC92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F6119B-58F3-490C-A9C3-1986AF7CC92D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +100,8 @@ Global
 		{A342755D-267E-486A-8896-F70AD24E6871} = {8096001A-C168-4C49-A273-7F4919148752}
 		{7F910E81-E919-450E-A355-6B6E256F3447} = {64EBB020-6D60-45D7-83E4-4B581CF3C834}
 		{8EB61CA1-D621-473A-93B5-07B4BFB000BC} = {64EBB020-6D60-45D7-83E4-4B581CF3C834}
+		{D8034A02-A867-4D70-B957-6A910B846D6A} = {DE337137-6940-449E-B323-B4F160274904}
+		{33F6119B-58F3-490C-A9C3-1986AF7CC92D} = {DE337137-6940-449E-B323-B4F160274904}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB10E072-BC8E-448D-BD13-FB33B04063A2}

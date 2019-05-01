@@ -1,0 +1,27 @@
+City -
+	Id - int
+	Name - string
+	ZipCode - long
+
+ContactType -
+	Id - int
+	Name - string
+
+PersonAddress -
+	Id - int
+	Street - string
+	City - City
+
+ContactInfo -
+	Id - int
+	ContactType - ContactType
+	Value - string
+
+Person -
+	Id - int
+	Name - string
+	BirthDate - datetime
+	Gender - string
+	Addresses - List<PersonAddress>
+	ContactInfos - List<ContactInfo>
+

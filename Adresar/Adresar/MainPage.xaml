@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Adresar"
+             x:Class="Adresar.MainPage" Title="MainPage">
+
+    <StackLayout Padding="10">
+        
+        <Button BackgroundColor="Blue" Text="Pregled gradova" Command="{Binding CityListPage}"/>
+
+        <!--<Label Text="{Binding Title}"/>
+        <Entry Text="{Binding Title}"/>
+        <Entry Text="{Binding Title}"/>-->
+
+    </StackLayout>
+
+</ContentPage>
