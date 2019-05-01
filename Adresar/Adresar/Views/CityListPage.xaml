@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Adresar.Views.CityListPage"
+             x:Name="CityList"
              Title="Pregled gradova">
     <ContentPage.Content>
 
@@ -25,7 +26,7 @@
                         FontAttributes="Bold" 
                         Text="+" Margin="5" 
                         BackgroundColor="Green"
-                        Clicked="Button_Clicked"/>
+                        Command="{Binding NewCityCommand}"/>
 
             </Grid>
 
@@ -35,14 +36,39 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" BackgroundColor="DeepSkyBlue" FontSize="12" Text="Sortiraj po nazivu" />
-                <Button Grid.Column="1" BackgroundColor="DeepSkyBlue" FontSize="12" Text="Sortiraj po pošt. broju" />
+                <Button Grid.Column="0" BackgroundColor="DeepSkyBlue" FontSize="12" Text="Sortiraj po nazivu" Command="{Binding SortByNameCommand}" />
+                <Button Grid.Column="1" BackgroundColor="DeepSkyBlue" FontSize="12" Text="Sortiraj po pošt. broju" Command="{Binding SortByZipCodeCommand}" />
             </Grid>
 
-            <ListView Grid.Row="2">
-                
-            </ListView>
+            
+            <ListView RowHeight="66" Grid.Row="2" 
+                      ItemsSource="{Binding Cities}"
+                      SelectedItem="{Binding SelectedCity, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
+                                <StackLayout Grid.Column="0">
+                                    <Label FontSize="22" TextColor="Chocolate" Text="{Binding Name}" />
+                                    <Label FontSize="16" Text="{Binding ZipCode}" />
+                                </StackLayout>
+                                <Button Grid.Column="1" BorderWidth="0" BackgroundColor="Red" WidthRequest="56" Text="X" Command="{Binding Source={x:Reference CityList}, Path=BindingContext.DeleteCityCommand}" CommandParameter="{Binding .}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <ActivityIndicator Grid.Row="2" 
+                               IsVisible="{Binding Loading}" 
+                               IsRunning="True"
+                               HorizontalOptions="CenterAndExpand" 
+                               VerticalOptions="CenterAndExpand"/>
         </Grid>
         
     </ContentPage.Content>

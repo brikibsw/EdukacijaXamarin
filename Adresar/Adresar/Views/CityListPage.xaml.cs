@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Adresar.ViewModels;
+using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,11 +12,19 @@ namespace Adresar.Views
 		public CityListPage ()
 		{
 			InitializeComponent ();
+
+            BindingContext = new CityListPageViewModel();
 		}
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            await Navigation.PushAsync(new CityPage());
+            base.OnAppearing();
+
+            var vm = BindingContext as CityListPageViewModel;
+            if( vm != null )
+            {
+                Task.Factory.StartNew(()=> vm.LoadCities());
+            }
         }
     }
 }

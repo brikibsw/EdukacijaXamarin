@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Adresar.Data
+﻿namespace Adresar.Data
 {
     public class City
     {

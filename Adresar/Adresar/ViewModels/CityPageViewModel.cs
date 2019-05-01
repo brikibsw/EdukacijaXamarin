@@ -1,8 +1,4 @@
 ﻿using Adresar.Data;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -10,9 +6,15 @@ namespace Adresar.ViewModels
 {
     public class CityPageViewModel : BaseViewModel
     {
+        private readonly AdresarDatabase database;
+
         public CityPageViewModel()
         {
-            City = new City();
+            database = new AdresarDatabase();
+            if( City == null )
+            {
+                City = new City();
+            }
 
             SaveCommand = new Command(Save);
             DeleteCommand = new Command(Delete);
@@ -22,6 +24,8 @@ namespace Adresar.ViewModels
         public void Save()
         {
             // spremimo City negdje
+            database.Cities.Insert(City);
+
 
             // vratimo se na popis gradova CityList
             Navigation.PopAsync();
@@ -29,11 +33,19 @@ namespace Adresar.ViewModels
 
         public ICommand DeleteCommand { get; private set; }
 
-        private void Delete()
+        private async void Delete()
         {
-            // ako je postojeci grad obrisati ga iz baze
+            if( City.Id > 0 )
+            {
+                var answer = await DisplayAlert("Brisanje", "Da li ste sigurni da želite obrisati grad?", "Da", "Ne");
+                if(answer)
+                {
+                    database.Cities.Delete(a => a.Id == City.Id);
+                }
+            }
 
-            City = new City();
+            //City = new City();
+            await Navigation.PopAsync();
         }
 
         private City _city;
@@ -45,6 +57,16 @@ namespace Adresar.ViewModels
                 _city = value;
                 OnPropertyChanged(nameof(City));
             }
+        }
+
+        public override void Dispose()
+        {
+            if( database != null )
+            {
+                database.Dispose();
+            }
+
+            base.Dispose();
         }
     }
 }
