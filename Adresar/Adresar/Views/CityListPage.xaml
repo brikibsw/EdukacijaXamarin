@@ -18,14 +18,17 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 
-                <Entry Placeholder="Traži..." Grid.Column="0" />
+                <Entry Grid.Column="0" 
+                       Placeholder="Traži..." 
+                       Text="{Binding Search}"/>
+                
                 <Button Grid.Column="1" 
                         HeightRequest="42" 
                         FontSize="20" 
                         FontAttributes="Bold" 
                         Text="+" Margin="5" 
                         BackgroundColor="Green"
-                        Clicked="Button_Clicked"/>
+                        Command="{Binding NewCityCommand}"/>
 
             </Grid>
 
@@ -35,14 +38,27 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" BackgroundColor="DeepSkyBlue" FontSize="12" Text="Sortiraj po nazivu" />
-                <Button Grid.Column="1" BackgroundColor="DeepSkyBlue" FontSize="12" Text="Sortiraj po pošt. broju" />
+                <Button Grid.Column="0" BackgroundColor="DeepSkyBlue" FontSize="12" Text="Sortiraj po nazivu" Command="{Binding SortByNameCommand}" />
+                <Button Grid.Column="1" BackgroundColor="DeepSkyBlue" FontSize="12" Text="Sortiraj po pošt. broju" Command="{Binding SortByZipCommand}"/>
             </Grid>
 
-            <ListView Grid.Row="2">
-                
+            <ListView Grid.Row="2"
+                      RowHeight="66"
+                      ItemsSource="{Binding Gradovi}"
+                      SelectedItem="{Binding Grad}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="{Binding Name}" TextColor="Black" FontSize="20"/>
+                                <Label Text="{Binding ZipCode}"/>
+                            </StackLayout>
+                                
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
-
+            
         </Grid>
         
     </ContentPage.Content>

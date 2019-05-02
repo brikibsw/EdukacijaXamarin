@@ -10,9 +10,19 @@ namespace Adresar.ViewModels
 {
     public class CityPageViewModel : BaseViewModel
     {
-        public CityPageViewModel()
+        private readonly AdresarDatabase database;
+        public CityPageViewModel(City grad)
         {
-            City = new City();
+            database = new AdresarDatabase();
+
+            if(grad == null)
+            {
+                City = new City();
+            }
+            else
+            {
+                City = grad;
+            }
 
             SaveCommand = new Command(Save);
             DeleteCommand = new Command(Delete);
@@ -21,7 +31,16 @@ namespace Adresar.ViewModels
         public ICommand SaveCommand { get; private set; }
         public void Save()
         {
-            // spremimo City negdje
+            // spremimo City ako je novi
+            if( City.Id == 0)
+            {
+                database.Cities.Insert(City);
+            }
+            // ili ažuriramo ako je postojeci
+            else
+            {
+                database.Cities.Update(City);
+            }
 
             // vratimo se na popis gradova CityList
             Navigation.PopAsync();
@@ -32,8 +51,13 @@ namespace Adresar.ViewModels
         private void Delete()
         {
             // ako je postojeci grad obrisati ga iz baze
+            if(City.Id != 0)
+            {
+                database.Cities.Delete(a => a.Id == City.Id);
+            }
 
-            City = new City();
+            // vratimo se na popis gradova CityList
+            Navigation.PopAsync();
         }
 
         private City _city;

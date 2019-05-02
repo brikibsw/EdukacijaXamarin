@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Adresar.ViewModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,11 +11,8 @@ namespace Adresar.Views
 		public CityListPage ()
 		{
 			InitializeComponent ();
-		}
 
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CityPage());
-        }
+            BindingContext = new CityListPageViewModel();
+		}
     }
 }
