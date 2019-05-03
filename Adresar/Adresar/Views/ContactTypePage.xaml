@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adresar.Views.ContactTypePage"
+             Title="Kontakt tip">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Naziv" Grid.Row="0"/>
+            <Entry Grid.Row="1" Text="{Binding ContactType.Name}"/>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="3" Padding="10">
+                <Button HorizontalOptions="StartAndExpand" BackgroundColor="Red" Text="Obriši" Command="{Binding DeleteCommand}" />
+                <Button HorizontalOptions="EndAndExpand" BackgroundColor="Green" Text="Spremi" Command="{Binding SaveCommand}" />
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

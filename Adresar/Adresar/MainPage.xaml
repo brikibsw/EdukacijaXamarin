@@ -6,7 +6,9 @@
 
     <StackLayout Padding="10">
         
-        <Button BackgroundColor="Blue" Text="Pregled gradova" Command="{Binding CityListPage}"/>
+        <Button BackgroundColor="Blue" TextColor="White" Text="Pregled gradova" Command="{Binding CityListPage}"/>
+
+        <Button BackgroundColor="Blue" TextColor="White" Text="Pregled kontakt tipova" Command="{Binding ContactTypeListPage}"/>
 
         <!--<Label Text="{Binding Title}" />
         <Entry Text="{Binding Title}" />

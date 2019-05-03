@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adresar.Views.ContactTypeListPage"
+             Title="Pregled kontakt tipova">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" 
+                    HeightRequest="42" 
+                    FontSize="20" 
+                    FontAttributes="Bold" 
+                    Text="+" Margin="5" 
+                    BackgroundColor="Green"
+                    Command="{Binding NewContactTypeCommand}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

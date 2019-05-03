@@ -9,24 +9,21 @@ namespace Adresar.ViewModels
         public MainPageViewModel()
         {
             CityListPage = new Command(GoToCityListPage);
+            ContactTypeListPage = new Command(GoToContactType);
         }
 
-        public ICommand CityListPage { get; private set; }
+        public ICommand CityListPage { get; }
 
         private async void GoToCityListPage()
         {
             await Navigation.PushAsync(new CityListPage());
         }
 
-        private string _title;
-        public string Title
+        public ICommand ContactTypeListPage { get; }
+
+        private async void GoToContactType()
         {
-            get { return _title; }
-            set
-            {
-                _title = value;
-                OnPropertyChanged(nameof(Title));
-            }
+            await Navigation.PushAsync(new ContactTypeListPage());
         }
     }
 }
