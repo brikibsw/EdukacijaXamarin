@@ -1,8 +1,4 @@
 ﻿using Adresar.Data;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -31,33 +27,59 @@ namespace Adresar.ViewModels
         public ICommand SaveCommand { get; private set; }
         public void Save()
         {
-            // spremimo City ako je novi
-            if( City.Id == 0)
+            if(City.Name == null || City.Name.Length == 0 || City.ZipCode == 0 )
             {
-                database.Cities.Insert(City);
+                DisplayAlert("Upozorenje", "Vrijednosti naziva i poštanskog broja moraju biti unešeni!", "OK");
             }
-            // ili ažuriramo ako je postojeci
             else
             {
-                database.Cities.Update(City);
-            }
+                var postoji = database.Cities.Exists(a => a.Name.ToUpper() == City.Name.ToUpper() && 
+                                                            a.ZipCode == City.ZipCode);
+                if( postoji )
+                {
+                    DisplayAlert("Upozorenje", "Grad sa istim imenom i poštanskim brojem već postoji!", "OK");
+                }
+                else
+                {
+                    // spremimo City ako je novi
+                    if (City.Id == 0)
+                    {
+                        database.Cities.Insert(City);
+                    }
+                    // ili ažuriramo ako je postojeci
+                    else
+                    {
+                        database.Cities.Update(City);
+                    }
 
-            // vratimo se na popis gradova CityList
-            Navigation.PopAsync();
+                    // vratimo se na popis gradova CityList
+                    Navigation.PopAsync();
+                }
+            }
         }
 
         public ICommand DeleteCommand { get; private set; }
 
-        private void Delete()
+        private async void Delete()
         {
-            // ako je postojeci grad obrisati ga iz baze
-            if(City.Id != 0)
-            {
-                database.Cities.Delete(a => a.Id == City.Id);
-            }
+            // pitati korisnika da li je siguran da zeli obrsati grad
 
-            // vratimo se na popis gradova CityList
-            Navigation.PopAsync();
+            var result = await DisplayAlert("Brisanje", 
+                                            "Da li ste sigurni da želite obrisati grad?", 
+                                            "Da", 
+                                            "Ne");
+
+            if( result )
+            {
+                // ako je postojeci grad obrisati ga iz baze
+                if (City.Id != 0)
+                {
+                    database.Cities.Delete( (a) => a.Id == City.Id );
+                }
+
+                // vratimo se na popis gradova CityList
+                await Navigation.PopAsync();
+            }
         }
 
         private City _city;

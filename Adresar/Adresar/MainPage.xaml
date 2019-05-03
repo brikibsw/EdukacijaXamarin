@@ -8,8 +8,8 @@
         
         <Button BackgroundColor="Blue" Text="Pregled gradova" Command="{Binding CityListPage}"/>
 
-        <!--<Label Text="{Binding Title}"/>
-        <Entry Text="{Binding Title}"/>
+        <!--<Label Text="{Binding Title}" />
+        <Entry Text="{Binding Title}" />
         <Entry Text="{Binding Title}"/>-->
 
     </StackLayout>

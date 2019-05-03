@@ -14,5 +14,16 @@ namespace Adresar.Views
 
             BindingContext = new CityListPageViewModel();
 		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var vm = BindingContext as CityListPageViewModel;
+            if( vm != null )
+            {
+                vm.LoadCities();
+            }
+        }
     }
 }

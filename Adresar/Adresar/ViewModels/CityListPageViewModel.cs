@@ -11,23 +11,26 @@ namespace Adresar.ViewModels
 {
     public class CityListPageViewModel : BaseViewModel
     {
+        private readonly AdresarDatabase database;
+
         public CityListPageViewModel()
         {
+            database = new AdresarDatabase();            
+
             NewCityCommand = new Command(NewCity);
             SortByNameCommand = new Command(SortByName);
             SortByZipCommand = new Command(SortByZip);
 
+            LoadCities();
+        }
+
+        public void LoadCities()
+        {
+            originalGradovi = database.Cities.FindAll().ToList();
             Gradovi = new List<City>(originalGradovi);
         }
 
-        private List<City> originalGradovi { get; } = new List<City>
-            {
-                new City { Id = 1, Name = "Zagreb", ZipCode = 10000 },
-                new City { Id = 2, Name = "Slavonski Brod", ZipCode = 35000 },
-                new City { Id = 3, Name = "Požega", ZipCode = 34000 },
-                new City { Id = 4, Name = "Split", ZipCode = 23000 },
-                new City { Id = 5, Name = "Zagvozd", ZipCode = 21270 }
-            };
+        private List<City> originalGradovi { get; set; }
 
         public ICommand NewCityCommand { get; }
 
