@@ -12,5 +12,16 @@ namespace Adresar.Views
             InitializeComponent();
             BindingContext = new ContactTypeListViewModel();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var vm = BindingContext as ContactTypeListViewModel;
+            if(vm != null)
+            {
+                vm.LoadContactTypes();
+            }
+        }
     }
 }

@@ -7,6 +7,16 @@ ContactType -
 	Id - int
 	Name - string
 
+Person -
+	Id - int
+	Name - string
+	BirthDate - datetime
+	Gender - string
+	Addresses - List<PersonAddress>
+	ContactInfos - List<ContactInfo>
+
+	- grupirana lista po prvom slovu iz prezimena - kod prikaza svih
+
 PersonAddress -
 	Id - int
 	Street - string
@@ -16,12 +26,3 @@ ContactInfo -
 	Id - int
 	ContactType - ContactType
 	Value - string
-
-Person -
-	Id - int
-	Name - string
-	BirthDate - datetime
-	Gender - string
-	Addresses - List<PersonAddress>
-	ContactInfos - List<ContactInfo>
-

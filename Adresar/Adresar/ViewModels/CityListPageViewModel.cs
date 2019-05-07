@@ -101,7 +101,10 @@ namespace Adresar.ViewModels
 
         private async void NavigateToCityPage()
         {
-            await Navigation.PushAsync(new CityPage(Grad));
+            if( Grad != null )
+            {
+                await Navigation.PushAsync(new CityPage(Grad));
+            }
         }
 
         private string _search;

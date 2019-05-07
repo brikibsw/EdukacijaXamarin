@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adresar.Views.PersonListPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                <Entry Placeholder="Traži..." 
+                       HorizontalOptions="FillAndExpand" />
+                
+                <Button Text="+"
+                        BackgroundColor="Green"
+                        TextColor="White"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        Margin="5"/>
+            </StackLayout>
+
+            <ListView Grid.Row="1"
+                      IsGroupingEnabled="true">
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label  />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label  />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+            
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>

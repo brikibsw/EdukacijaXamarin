@@ -25,11 +25,11 @@ namespace Adresar.ViewModels
         }
 
         public ICommand SaveCommand { get; private set; }
-        public void Save()
+        public async void Save()
         {
             if(City.Name == null || City.Name.Length == 0 || City.ZipCode == 0 )
             {
-                DisplayAlert("Upozorenje", "Vrijednosti naziva i poštanskog broja moraju biti unešeni!", "OK");
+                await DisplayAlert("Upozorenje", "Vrijednosti naziva i poštanskog broja moraju biti unešeni!", "OK");
             }
             else
             {
@@ -37,7 +37,7 @@ namespace Adresar.ViewModels
                                                             a.ZipCode == City.ZipCode);
                 if( postoji )
                 {
-                    DisplayAlert("Upozorenje", "Grad sa istim imenom i poštanskim brojem već postoji!", "OK");
+                    await DisplayAlert("Upozorenje", "Grad sa istim imenom i poštanskim brojem već postoji!", "OK");
                 }
                 else
                 {
@@ -53,7 +53,7 @@ namespace Adresar.ViewModels
                     }
 
                     // vratimo se na popis gradova CityList
-                    Navigation.PopAsync();
+                    await Navigation.PopAsync();
                 }
             }
         }
@@ -64,8 +64,8 @@ namespace Adresar.ViewModels
         {
             // pitati korisnika da li je siguran da zeli obrsati grad
 
-            var result = await DisplayAlert("Brisanje", 
-                                            "Da li ste sigurni da želite obrisati grad?", 
+            var result = await DisplayAlert("Brisanje",
+                                            "Jeste li ste sigurni da želite obrisati grad?", 
                                             "Da", 
                                             "Ne");
 

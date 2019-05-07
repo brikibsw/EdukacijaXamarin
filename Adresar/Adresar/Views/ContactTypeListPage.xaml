@@ -7,15 +7,35 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" 
+            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                <Entry HorizontalOptions="FillAndExpand"
+                       Placeholder="Traži..."
+                       Text="{Binding Search}"/>
+                <Button  
                     HeightRequest="42" 
                     FontSize="20" 
                     FontAttributes="Bold" 
                     Text="+" Margin="5" 
                     BackgroundColor="Green"
                     Command="{Binding NewContactTypeCommand}"/>
+            </StackLayout>
+
+            <ListView Grid.Row="1"
+                      ItemsSource="{Binding ContactTypes}"
+                      SelectedItem="{Binding ContactType}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="{Binding Name}" TextColor="Black" FontSize="20"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
