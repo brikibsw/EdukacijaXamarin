@@ -11,7 +11,8 @@
 
             <StackLayout Grid.Row="0" Orientation="Horizontal">
                 <Entry Placeholder="Traži..." 
-                       HorizontalOptions="FillAndExpand" />
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Search}"/>
                 
                 <Button Text="+"
                         BackgroundColor="Green"
@@ -22,11 +23,12 @@
             </StackLayout>
 
             <ListView Grid.Row="1"
-                      IsGroupingEnabled="true">
+                      IsGroupingEnabled="true"
+                      ItemsSource="{Binding GroupedPersons}">
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label  />
+                            <Label Text="{Binding Key}" />
                         </ViewCell>
                     </DataTemplate>
                 </ListView.GroupHeaderTemplate>
@@ -34,7 +36,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label  />
+                            <Label  Text="{Binding Name}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

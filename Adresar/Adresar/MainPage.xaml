@@ -10,6 +10,8 @@
 
         <Button BackgroundColor="Blue" TextColor="White" Text="Pregled kontakt tipova" Command="{Binding ContactTypeListPage}"/>
 
+        <Button BackgroundColor="Blue" TextColor="White" Text="Pregled osoba" Command="{Binding PersonListPage}"/>
+
         <!--<Label Text="{Binding Title}" />
         <Entry Text="{Binding Title}" />
         <Entry Text="{Binding Title}"/>-->

@@ -1,6 +1,7 @@
 ﻿using Adresar.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Adresar.ViewModels
@@ -9,8 +10,22 @@ namespace Adresar.ViewModels
     {
         public PersonListViewModel()
         {
-            var a = new GroupedPerson
-                    {
+            originalPersons = new List<Person>
+            {
+                new Person
+                        {
+                            Name = "Arijan Avramović",
+                            Gender = "M",
+                            BirthDate = new DateTime(1994, 5, 16),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Ivo Andrić",
+                            Gender = "M",
+                            BirthDate = new DateTime(1925, 10, 2),
+                            Group = "A"
+                        },
                         new Person
                         {
                             Name = "Arijan Avramović",
@@ -24,11 +39,105 @@ namespace Adresar.ViewModels
                             Gender = "M",
                             BirthDate = new DateTime(1925, 10, 2),
                             Group = "A"
-                        }
-                    };
-            a.Group = "A";
-            var b = new GroupedPerson
-                    {
+                        },
+                        new Person
+                        {
+                            Name = "Arijan Avramović",
+                            Gender = "M",
+                            BirthDate = new DateTime(1994, 5, 16),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Ivo Andrić",
+                            Gender = "M",
+                            BirthDate = new DateTime(1925, 10, 2),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Arijan Avramović",
+                            Gender = "M",
+                            BirthDate = new DateTime(1994, 5, 16),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Ivo Andrić",
+                            Gender = "M",
+                            BirthDate = new DateTime(1925, 10, 2),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Arijan Avramović",
+                            Gender = "M",
+                            BirthDate = new DateTime(1994, 5, 16),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Ivo Andrić",
+                            Gender = "M",
+                            BirthDate = new DateTime(1925, 10, 2),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Arijan Avramović",
+                            Gender = "M",
+                            BirthDate = new DateTime(1994, 5, 16),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Ivo Andrić",
+                            Gender = "M",
+                            BirthDate = new DateTime(1925, 10, 2),
+                            Group = "A"
+                        },
+                        new Person
+                        {
+                            Name = "Djuro Basariček",
+                            Gender = "M",
+                            BirthDate = new DateTime(1955, 9, 5),
+                            Group = "B"
+                        },
+                        new Person
+                        {
+                            Name = "Djuro Basariček",
+                            Gender = "M",
+                            BirthDate = new DateTime(1955, 9, 5),
+                            Group = "B"
+                        },
+                        new Person
+                        {
+                            Name = "Djuro Basariček",
+                            Gender = "M",
+                            BirthDate = new DateTime(1955, 9, 5),
+                            Group = "B"
+                        },
+                        new Person
+                        {
+                            Name = "Djuro Basariček",
+                            Gender = "M",
+                            BirthDate = new DateTime(1955, 9, 5),
+                            Group = "B"
+                        },
+                        new Person
+                        {
+                            Name = "Djuro Basariček",
+                            Gender = "M",
+                            BirthDate = new DateTime(1955, 9, 5),
+                            Group = "B"
+                        },
+                        new Person
+                        {
+                            Name = "Djuro Basariček",
+                            Gender = "M",
+                            BirthDate = new DateTime(1955, 9, 5),
+                            Group = "B"
+                        },
                         new Person
                         {
                             Name = "Djuro Basariček",
@@ -36,21 +145,45 @@ namespace Adresar.ViewModels
                             BirthDate = new DateTime(1955, 9, 5),
                             Group = "B"
                         }
-                    };
-            b.Group = "B";
-            GroupedPersons = new List<GroupedPerson>
-            {
-                a,
-                b
             };
+            var grouped = originalPersons.GroupBy(a => a.Group).ToList();
+            GroupedPersons = new List<IGrouping<string, Person>>(grouped);
         }
 
+        private List<Person> originalPersons;
 
+        private string _search;
 
+        public string Search
+        {
+            get { return _search; }
+            set
+            {
+                _search = value;
+                OnPropertyChanged(nameof(Search));
+                OnSearch();
+            }
+        }
 
-        private List<GroupedPerson> _groupedPersons;
+        private void OnSearch()
+        {
+            if (Search != null && Search.Length > 0)
+            {
+                var rezultat = originalPersons.Where(b => b.Name.ToUpper().Contains(Search.ToUpper()))
+                                .GroupBy(a => a.Group);
+                GroupedPersons = new List<IGrouping<string, Person>>(rezultat);
 
-        public List<GroupedPerson> GroupedPersons
+            }
+            else
+            {
+                var grouped = originalPersons.GroupBy(a => a.Group).ToList();
+                GroupedPersons = new List<IGrouping<string, Person>>(grouped);
+            }
+        }
+
+        private List<IGrouping<string, Person>> _groupedPersons;
+
+        public List<IGrouping<string, Person>> GroupedPersons
         {
             get { return _groupedPersons; }
             set
@@ -59,12 +192,5 @@ namespace Adresar.ViewModels
                 OnPropertyChanged(nameof(GroupedPersons));
             }
         }
-    }
-
-    public class GroupedPerson : List<Person>
-    {
-        public string Group { get; set; }
-
-        public List<Person> Persons => this;
     }
 }

@@ -10,6 +10,7 @@ namespace Adresar.ViewModels
         {
             CityListPage = new Command(GoToCityListPage);
             ContactTypeListPage = new Command(GoToContactType);
+            PersonListPage = new Command(GoToPersonListPage);
         }
 
         public ICommand CityListPage { get; }
@@ -24,6 +25,13 @@ namespace Adresar.ViewModels
         private async void GoToContactType()
         {
             await Navigation.PushAsync(new ContactTypeListPage());
+        }
+
+        public ICommand PersonListPage { get; }
+
+        public async void GoToPersonListPage()
+        {
+            await Navigation.PushAsync(new PersonListPage());
         }
     }
 }
