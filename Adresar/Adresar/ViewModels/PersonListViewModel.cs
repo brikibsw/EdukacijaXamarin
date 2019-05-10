@@ -1,8 +1,11 @@
 ﻿using Adresar.Data;
+using Adresar.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Adresar.ViewModels
 {
@@ -148,6 +151,15 @@ namespace Adresar.ViewModels
             };
             var grouped = originalPersons.GroupBy(a => a.Group).ToList();
             GroupedPersons = new List<IGrouping<string, Person>>(grouped);
+
+            NewPersonCommand = new Command(NewPerson);
+        }
+
+        public ICommand NewPersonCommand { get; }
+
+        private async void NewPerson()
+        {
+            await Navigation.PushAsync(new PersonPage());
         }
 
         private List<Person> originalPersons;

@@ -15,11 +15,7 @@
                        Placeholder="Traži..."
                        Text="{Binding Search}"/>
                 <Button  
-                    HeightRequest="42" 
-                    FontSize="20" 
-                    FontAttributes="Bold" 
-                    Text="+" Margin="5" 
-                    BackgroundColor="Green"
+                    Style="{StaticResource NewButton}"
                     Command="{Binding NewContactTypeCommand}"/>
             </StackLayout>
 

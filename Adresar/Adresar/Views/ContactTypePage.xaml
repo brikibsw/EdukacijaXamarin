@@ -16,8 +16,8 @@
             <Entry Grid.Row="1" Text="{Binding ContactType.Name}"/>
 
             <StackLayout Orientation="Horizontal" Grid.Row="3" Padding="10">
-                <Button HorizontalOptions="StartAndExpand" BackgroundColor="Red" Text="Obriši" Command="{Binding DeleteCommand}" />
-                <Button HorizontalOptions="EndAndExpand" BackgroundColor="Green" Text="Spremi" Command="{Binding SaveCommand}" />
+                <Button Style="{StaticResource DeleteButton}" Command="{Binding DeleteCommand}" />
+                <Button Style="{StaticResource SaveButton}" Command="{Binding SaveCommand}" />
             </StackLayout>
 
         </Grid>

@@ -23,11 +23,7 @@
                        Text="{Binding Search}"/>
                 
                 <Button Grid.Column="1" 
-                        HeightRequest="42" 
-                        FontSize="20" 
-                        FontAttributes="Bold" 
-                        Text="+" Margin="5" 
-                        BackgroundColor="Green"
+                        Style="{StaticResource NewButton}"
                         Command="{Binding NewCityCommand}"/>
 
             </Grid>

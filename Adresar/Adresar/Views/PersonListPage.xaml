@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Adresar.Views.PersonListPage">
+             x:Class="Adresar.Views.PersonListPage"
+             Title="Pregled osoba">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -13,13 +14,9 @@
                 <Entry Placeholder="Traži..." 
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Search}"/>
-                
-                <Button Text="+"
-                        BackgroundColor="Green"
-                        TextColor="White"
-                        FontSize="20"
-                        FontAttributes="Bold"
-                        Margin="5"/>
+
+                <Button Style="{StaticResource NewButton}"
+                        Command="{Binding NewPersonCommand}"/>
             </StackLayout>
 
             <ListView Grid.Row="1"
@@ -28,7 +25,9 @@
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding Key}" />
+                            <StackLayout Padding="4">
+                                <Label Text="{Binding Key}" FontAttributes="Bold" FontSize="16" />
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.GroupHeaderTemplate>
@@ -36,7 +35,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label  Text="{Binding Name}"/>
+                            <StackLayout Padding="10">
+                                <Label  Text="{Binding Name}"/>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
