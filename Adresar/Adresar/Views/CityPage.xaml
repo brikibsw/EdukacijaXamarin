@@ -21,7 +21,7 @@
             <Entry Grid.Row="3" Keyboard="Numeric" Text="{Binding City.ZipCode}"/>
 
             <StackLayout Orientation="Horizontal" Grid.Row="5" Padding="10">
-                <Button Style="{StaticResource DeleteButton}" Command="{Binding DeleteCommand}" />
+                <Button Style="{StaticResource DeleteButtonRounded}" Command="{Binding DeleteCommand}" />
                 <Button Style="{StaticResource SaveButton}" Command="{Binding SaveCommand}" />
             </StackLayout>
 

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adresar.Views.PersonAddressPage">
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <Label Text="Ulica"/>
+                <Entry Text="{Binding Address.Street}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1">
+                <Label Text="Grad"/>
+                <Picker ItemsSource="{Binding Cities}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding Address.City}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Orientation="Horizontal">
+                <Button Style="{StaticResource DeleteButton}" Command="{Binding DeleteCommand}"/>
+                <Button Style="{StaticResource SaveButton}" Command="{Binding SaveCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,5 @@
 ﻿using Adresar.Data;
+using Adresar.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,8 +17,198 @@ namespace Adresar.ViewModels
 
             SaveCommand = new Command(Save);
             DeleteCommand = new Command(Delete);
+            NewAddressCommand = new Command(NewAddress);
 
             GenderList = new List<string> { "M", "Ž" };
+
+            MessagingCenter.Subscribe<PersonAddressViewModel, PersonAddress>(this, "NewPersonAdress", HandleNewPersonAddress);
+
+            Person = new Person
+            {
+                Name = "Pero Perić",
+                BirthDate = new DateTime(1988, 5, 22),
+                Gender = "M",
+                Group = "P",
+                Addresses = new List<PersonAddress>
+                {
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                    new PersonAddress
+                    {
+                        City = new City { Name = "Slavonski Brod", ZipCode = 35000 },
+                        Street = "Neki Trg 123"
+                    },
+                },
+                ContactInfos = new List<ContactInfo>
+                {
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                    new ContactInfo
+                    {
+                        ContactType = new ContactType { Name = "Telefon"},
+                        Value = "035/555-666"
+                    },
+                }
+            };
+        }
+
+        private void HandleNewPersonAddress(PersonAddressViewModel vm, PersonAddress address)
+        {
+            Person.Addresses.Add(address);
+            Person.Addresses = new List<PersonAddress>(Person.Addresses);
+        }
+
+        public ICommand NewAddressCommand { get; }
+
+        private async void NewAddress()
+        {
+            await Navigation.PushModalAsync(new PersonAddressPage());
         }
 
 

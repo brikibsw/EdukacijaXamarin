@@ -8,8 +8,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>                
-                
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -31,9 +29,64 @@
                             ItemsSource="{Binding GenderList}"
                             SelectedItem="{Binding Person.Gender}"/>
                 </StackLayout>
-                
             </StackLayout>
-            <StackLayout Orientation="Horizontal" Grid.Row="4" Padding="10">
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Adrese" HorizontalOptions="StartAndExpand"
+                               VerticalOptions="Center"/>
+                        <Button Style="{StaticResource NewButtonSmall}"
+                                Command="{Binding NewAddressCommand}"/>
+                    </StackLayout>
+
+                    <ListView ItemsSource="{Binding Person.Addresses}"
+                              RowHeight="66">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" Padding="10">
+                                        <Label Text="{Binding Street}" 
+                                               TextColor="Black" 
+                                               FontSize="20"/>
+                                        <Label Text="{Binding City.Name}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Kontakti" HorizontalOptions="StartAndExpand"
+                               VerticalOptions="Center"/>
+                        <Button Style="{StaticResource NewButtonSmall}"/>
+                    </StackLayout>
+
+                    <ListView ItemsSource="{Binding Person.ContactInfos}"
+                              RowHeight="66">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" Padding="10">
+                                        <Label Text="{Binding Value}" 
+                                               TextColor="Black" 
+                                               FontSize="20"/>
+                                        <Label Text="{Binding ContactType.Name}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+            
+            <StackLayout Orientation="Horizontal" Grid.Row="3" Padding="10">
                 <Button Style="{StaticResource DeleteButton}" Command="{Binding DeleteCommand}" />
                 <Button Style="{StaticResource SaveButton}" Command="{Binding SaveCommand}" />
             </StackLayout>

@@ -4,27 +4,43 @@
              x:Class="Adresar.App">
     <Application.Resources>
         <ResourceDictionary>
+
+            <x:Int32 x:Key="ButtonFontSize">20</x:Int32>
+            <x:String x:Key="DeleteButtonText">Obriši</x:String>
+
+            <Color x:Key="ErrorColor">Red</Color>
+            <Color x:Key="SuccessColor">Green</Color>
+            <Color x:Key="PrimaryColor">Blue</Color>
+
             <Style x:Key="DeleteButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Red"/>
-                <Setter Property="Text" Value="Obriši"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}"/>
+                <Setter Property="Text" Value="{StaticResource DeleteButtonText}"/>
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>
+            <Style x:Key="DeleteButtonRounded" TargetType="Button" BasedOn="{StaticResource DeleteButton}">
+                <Setter Property="CornerRadius" Value="12"/>
+            </Style>
             <Style x:Key="SaveButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Green"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource SuccessColor}"/>
                 <Setter Property="Text" Value="Spremi"/>
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>
             <Style x:Key="NewButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Green"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource SuccessColor}"/>
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="Text" Value="+"/>
                 <Setter Property="HeightRequest" Value="48"/>
                 <Setter Property="WidthRequest" Value="48"/>
                 <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style x:Key="NewButtonSmall" TargetType="Button" BasedOn="{StaticResource NewButton}">
+                <Setter Property="HeightRequest" Value="36"/>
+                <Setter Property="WidthRequest" Value="36"/>
+                <Setter Property="Margin" Value="0"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

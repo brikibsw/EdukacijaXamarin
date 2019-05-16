@@ -11,17 +11,23 @@ namespace Adresar.ViewModels
         {
             database = new AdresarDatabase();
 
-            if(grad == null)
-            {
-                City = new City();
-            }
-            else
-            {
-                City = grad;
-            }
+            //if(grad == null)
+            //{
+            //    City = new City();
+            //}
+            //else
+            //{
+            //    City = grad;
+            //}
 
-            SaveCommand = new Command(Save);
+            SaveCommand = new Command(Save, () => City != null);
+            SaveCommand.CanExecuteChanged += SaveCommand_CanExecuteChanged;
             DeleteCommand = new Command(Delete);
+        }
+
+        private void SaveCommand_CanExecuteChanged(object sender, System.EventArgs e)
+        {
+            var p = e;
         }
 
         public ICommand SaveCommand { get; private set; }
@@ -60,27 +66,31 @@ namespace Adresar.ViewModels
 
         public ICommand DeleteCommand { get; private set; }
 
-        private async void Delete()
+        private void Delete()
         {
-            // pitati korisnika da li je siguran da zeli obrsati grad
+            City = new City();
 
-            var result = await DisplayAlert("Brisanje",
-                                            "Jeste li ste sigurni da želite obrisati grad?", 
-                                            "Da", 
-                                            "Ne");
+            //// pitati korisnika da li je siguran da zeli obrsati grad
 
-            if( result )
-            {
-                // ako je postojeci grad obrisati ga iz baze
-                if (City.Id != 0)
-                {
-                    database.Cities.Delete( (a) => a.Id == City.Id );
-                }
+            //var result = await DisplayAlert("Brisanje",
+            //                                "Jeste li ste sigurni da želite obrisati grad?", 
+            //                                "Da", 
+            //                                "Ne");
 
-                // vratimo se na popis gradova CityList
-                await Navigation.PopAsync();
-            }
+            //if( result )
+            //{
+            //    // ako je postojeci grad obrisati ga iz baze
+            //    if (City.Id != 0)
+            //    {
+            //        database.Cities.Delete( (a) => a.Id == City.Id );
+            //    }
+
+            //    // vratimo se na popis gradova CityList
+            //    await Navigation.PopAsync();
+            //}
         }
+
+        public int MyProperty { get; set; }
 
         private City _city;
         public City City
@@ -90,6 +100,8 @@ namespace Adresar.ViewModels
             {
                 _city = value;
                 OnPropertyChanged(nameof(City));
+
+                ((Command)SaveCommand).ChangeCanExecute();
             }
         }
     }
