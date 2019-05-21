@@ -5,7 +5,8 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <x:Int32 x:Key="ButtonFontSize">20</x:Int32>
+            <x:Int32 x:Key="ButtonFontSize">22</x:Int32>
+            <x:Int32 x:Key="SmallButtonFontSize">16</x:Int32>
             <x:String x:Key="DeleteButtonText">Obriši</x:String>
 
             <Color x:Key="ErrorColor">Red</Color>
@@ -37,9 +38,11 @@
                 <Setter Property="WidthRequest" Value="48"/>
                 <Setter Property="Margin" Value="5"/>
             </Style>
+            
             <Style x:Key="NewButtonSmall" TargetType="Button" BasedOn="{StaticResource NewButton}">
                 <Setter Property="HeightRequest" Value="36"/>
                 <Setter Property="WidthRequest" Value="36"/>
+                <Setter Property="FontSize" Value="{StaticResource SmallButtonFontSize}"/>
                 <Setter Property="Margin" Value="0"/>
             </Style>
         </ResourceDictionary>

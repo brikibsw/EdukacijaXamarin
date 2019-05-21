@@ -99,7 +99,7 @@ namespace Adresar.ViewModels
             set
             {
                 _city = value;
-                OnPropertyChanged(nameof(City));
+                OnPropertyChanged();
 
                 ((Command)SaveCommand).ChangeCanExecute();
             }
